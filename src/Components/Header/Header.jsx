@@ -1,12 +1,30 @@
 import { styled } from 'styled-components';
+import ContainerRow from '../Container/ContainerRow';
 
 const HeaderContainer = styled.header`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid black;
 `;
+
+const TextTitle = styled.h1`
+    font-family: LINE-Bd;
+    font-size: 1.5rem;
+    color: #888;
+`
 
 export default function Component() {
     return(
         <HeaderContainer>
-            Header
+            <ContainerRow>
+                <TextTitle>운영진 전용 관리 페이지</TextTitle>
+            </ContainerRow>
+            <ContainerRow>
+                <p>로그아웃</p>
+            </ContainerRow>
         </HeaderContainer>
     )
 };

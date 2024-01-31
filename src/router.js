@@ -1,15 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import ForOutlet from "./pages/ForOutlet";
-import MainPage from "./pages/MainPage/MainPage";
+import MainPage from "./pages/MainPage";
+import Home from './Contents/Home/Home';
 
 export default createBrowserRouter([
     {
         path: "/",
-        element: <ForOutlet/>,
+        element: <MainPage/>,
         children: [
             {
                 path: "",
-                element: <MainPage />
+                element: <Home />
             }
         ]
     }

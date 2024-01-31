@@ -1,8 +1,8 @@
 import React from 'react';
-import Sidebar from '../../Components/Sidebar/Sidebar';
-import Header from '../../Components/Header/Header';
-import Content from '../../Components/Content/Content';
+import Sidebar from '../Components/Sidebar/Sidebar';
+import Header from '../Components/Header/Header';
 import styled from 'styled-components';
+import { Outlet } from 'react-router-dom';
 
 const AppContainer = styled.div`
   display: flex;
@@ -11,9 +11,12 @@ const AppContainer = styled.div`
 
 const MainContent = styled.div`
   flex-grow: 1;
-  padding: 20px;
   background-color: #f1f1f1;
 `;
+
+const OutletContainer = styled.div`
+  padding: 20px;
+`
 
 export default function App() {
   return (
@@ -21,7 +24,9 @@ export default function App() {
       <Sidebar />
       <MainContent>
         <Header />
-        <Content />
+        <OutletContainer>
+          <Outlet />
+        </OutletContainer>
       </MainContent>
     </AppContainer>
   );
