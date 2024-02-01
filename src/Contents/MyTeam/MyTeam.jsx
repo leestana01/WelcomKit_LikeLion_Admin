@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ContainerColumn from '../../Components/Container/ContainerColumn';
 
@@ -46,13 +46,17 @@ const TextWritten = styled.p`
 `
 
 export default function MyTeam() {
-  const [users, setUsers] = useState([
-    { id: 1, detail: '임승민', team: '1', part:'DESIGN', isManager:false, isLeader: false },
-    { id: 2, detail: '이수혁', team: '1', part:'BACK', isManager:true, isLeader: true },
-    { id: 3, detail: '이나영', team: '1', part:'FRONT', isManager:true, isLeader: false },
-    { id: 4, detail: '김재우', team: '1', part:'FRONT', isManager:false, isLeader: false },
-    { id: 5, detail: '정재웅', team: '1', part:'BACK', isManager:false, isLeader: false },
-  ]);
+  const [users, setUsers] = useState([]);
+  
+  useEffect(() => {
+    setUsers([
+      { id: 1, detail: '임승민', team: '1', part:'DESIGN', isManager:false, isLeader: false },
+      { id: 2, detail: '이수혁', team: '1', part:'BACK', isManager:true, isLeader: true },
+      { id: 3, detail: '이나영', team: '1', part:'FRONT', isManager:true, isLeader: false },
+      { id: 4, detail: '김재우', team: '1', part:'FRONT', isManager:false, isLeader: false },
+      { id: 5, detail: '정재웅', team: '1', part:'BACK', isManager:false, isLeader: false },
+    ]);
+  }, [])
 
   return (
     <UserListContainer>
@@ -70,7 +74,7 @@ export default function MyTeam() {
           {users.map((user) => (
             <UserRow key={user.id}>
                 <UserCell>{user.detail}</UserCell>
-                <UserCell>{user.team == 0 ? '편성 전' : user.team}</UserCell>
+                <UserCell>{user.team === 0 ? '편성 전' : user.team}</UserCell>
                 <UserCell>
                     {user.part === 'FRONT' ? '프론트엔드' :
                     user.part === 'BACK' ? '백엔드' :

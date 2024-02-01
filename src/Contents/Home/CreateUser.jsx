@@ -22,7 +22,6 @@ const Table = styled.table`
   width: 100%
 `;
 
-const TableRow = styled.tr``;
 
 const TableHeader = styled.th`
   padding: 10px;
@@ -101,18 +100,18 @@ export default function CreateUser() {
       <p>해당 유저는 마니또가 편성되지 않으며 예기치 않은 문제가 발생할 수 있습니다.</p>
       <Table>
         <thead>
-          <TableRow>
+          <tr>
             <TableHeader>이름</TableHeader>
             <TableHeader>비밀번호(전화번호 뒤 4자리)</TableHeader>
             <TableHeader>학과</TableHeader>
             <TableHeader>파트</TableHeader>
             <TableHeader>소속 팀</TableHeader>
-            <TableHeader width="50px">삭제</TableHeader> {/* 삭제 열 추가 */}
-          </TableRow>
+            <TableHeader width="50px">삭제</TableHeader>
+          </tr>
         </thead>
         <tbody>
           {users.map((user, index) => (
-            <TableRow key={index}>
+            <tr key={index}>
               <TableCell>
                 <Input
                   name="name"
@@ -158,7 +157,7 @@ export default function CreateUser() {
                   {
                     [1,2,3,4,5,6,7,8,9,10].map(
                       el => {
-                        return (<option value={el}>{el}</option>);
+                        return (<option key={el} value={el}>{el}</option>);
                       }
                     )
                   }
@@ -167,16 +166,16 @@ export default function CreateUser() {
               <TableCell>
                 <ButtonDelete onClick={() => removeUser(index)}>삭제</ButtonDelete>
               </TableCell>
-            </TableRow>
+            </tr>
           ))}
-          <TableRow>
+          <tr>
             <TableCell colSpan="6">
               <ButtonRowContainer>
                   <Button onClick={addUser}>+ 추가</Button>
                   <Button onClick={handleAddUser}>해당 유저 전부 생성</Button>
               </ButtonRowContainer>
             </TableCell>
-          </TableRow>
+          </tr>
         </tbody>
       </Table>
     </Container>

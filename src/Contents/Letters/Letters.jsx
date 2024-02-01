@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const UserListContainer = styled.div`
@@ -80,15 +80,19 @@ const TextWritten = styled.p`
 `
 
 export default function Letters() {
-  const [users, setUsers] = useState([
-    { id: 1, detail: '임승민', team: '0', part:'DESIGN', messageWritten: false },
-    { id: 2, detail: '이수혁', team: '1', part:'BACK', messageWritten: false },
-    { id: 3, detail: '이나영', team: '1', part:'FRONT', messageWritten: true },
-    { id: 4, detail: '김재우', team: '2', part:'FRONT', messageWritten: false },
-    { id: 5, detail: '정재웅', team: '2', part:'BACK', messageWritten: false },
-  ]);
+  const [users, setUsers] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    setUsers([
+      { id: 1, detail: '임승민', team: '0', part:'DESIGN', messageWritten: false },
+      { id: 2, detail: '이수혁', team: '1', part:'BACK', messageWritten: false },
+      { id: 3, detail: '이나영', team: '1', part:'FRONT', messageWritten: true },
+      { id: 4, detail: '김재우', team: '2', part:'FRONT', messageWritten: false },
+      { id: 5, detail: '정재웅', team: '2', part:'BACK', messageWritten: false },
+    ]);
+  }, [])
 
   const handleMessageSubmit = () => {
     alert('완료');
@@ -112,7 +116,7 @@ export default function Letters() {
           {users.map((user) => (
             <UserRow key={user.id}>
                 <UserCell>{user.detail}</UserCell>
-                <UserCell>{user.team == 0 ? '편성 전' : user.team}</UserCell>
+                <UserCell>{user.team === 0 ? '편성 전' : user.team}</UserCell>
                 <UserCell>
                     {user.part === 'FRONT' ? '프론트엔드' :
                     user.part === 'BACK' ? '백엔드' :

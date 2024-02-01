@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const SidebarContainer = styled.div`
@@ -42,19 +43,20 @@ const Line = styled.div`
   background: white;
 `
 
-const Sidebar = () => (
-  <SidebarContainer>
+export default function Sidebar(){
+  const navigate = useNavigate();
+  return (
+    <SidebarContainer>
     <Logo>
       웰컴키트 종합 관리
     </Logo>
     <Line />
     <SidebarMenu>
-      <SidebarItem href="/">메인페이지</SidebarItem>
-      <SidebarItem href="/info">내 정보 수정</SidebarItem>
-      <SidebarItem href="/letters">편지 작성하기</SidebarItem>
-      <SidebarItem href="/team">내 팀 관리</SidebarItem>
+      <SidebarItem onClick={() => {navigate("/")}}>메인페이지</SidebarItem>
+      <SidebarItem onClick={() => {navigate("/info")}}>내 정보 수정</SidebarItem>
+      <SidebarItem onClick={() => {navigate("/letters")}}>편지 작성하기</SidebarItem>
+      <SidebarItem onClick={() => {navigate("/team")}}>내 팀 관리</SidebarItem>
     </SidebarMenu>
   </SidebarContainer>
-);
-
-export default Sidebar;
+  )
+}
